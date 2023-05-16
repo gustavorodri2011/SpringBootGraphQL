@@ -1,0 +1,32 @@
+# Query - Sirve únicamente para hacer consultas
+type Query {
+    findStudentById(studentId: String) : Student,
+    findAllStudents: [Student]
+}
+# Mutation - Sirve para hacer consultas que produzcan cambios en la BD
+type Mutation {
+    createStudent(inputStudent: InputStudent!): Student,
+    deleteStudentById(studentId: String): String
+}
+
+type Student {
+    id: ID,
+    name: String!,
+    lastName: String!,
+    age: Int,
+    course: Course
+}
+
+type Course {
+    id: ID,
+    name: String,
+    category: String,
+    teacher: String
+}
+
+input InputStudent {
+    name: String,
+    lastName: String,
+    age: Int,
+    courseId: String!
+}

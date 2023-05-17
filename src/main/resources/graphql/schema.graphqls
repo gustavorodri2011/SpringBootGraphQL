@@ -1,12 +1,24 @@
 # Query - Sirve únicamente para hacer consultas
 type Query {
+    # Students
     findStudentById(studentId: String) : Student,
     findAllStudents: [Student]
+
+    # Courses
+    findCoursesById(courseId: String) : Course,
+    findAllCourses: [Course]
+
+
 }
 # Mutation - Sirve para hacer consultas que produzcan cambios en la BD
 type Mutation {
+    # Students
     createStudent(inputStudent: InputStudent!): Student,
-    deleteStudentById(studentId: String): String
+    deleteStudentById(studentId: String): String,
+
+    # Courses
+    createCourse(inputCourse: InputCourse!): Course,
+    deleteCourseById(courseId: String): String,
 }
 
 type Student {
@@ -29,4 +41,10 @@ input InputStudent {
     lastName: String,
     age: Int,
     courseId: String!
+}
+
+input InputCourse {
+    name: String,
+    category:String,
+    teacher: String
 }
